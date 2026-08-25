@@ -7,7 +7,9 @@ class FinanceCard(ctk.CTkFrame):
         master,
         title,
         value,
-        description=""
+        description="",
+        variation="",
+        variation_type="neutral"
     ):
         super().__init__(
             master,
@@ -18,6 +20,8 @@ class FinanceCard(ctk.CTkFrame):
         self.title = title
         self.value = value
         self.description = description
+        self.variation = variation
+        self.variation_type = variation_type
 
         self.create_widgets()
 
@@ -61,6 +65,34 @@ class FinanceCard(ctk.CTkFrame):
             )
 
             self.description_label.pack(
+                anchor="w",
+                padx=20,
+                pady=(2, 15)
+            )
+
+        self.create_variation()
+            
+    def create_variation(self):
+            if not self.variation:
+                return
+
+            if self.variation_type == "positive":
+                symbol = "↑"
+            elif self.variation_type == "negative":
+                symbol = "↓"
+            else:
+                symbol = "→"
+
+            self.variation_label = ctk.CTkLabel(
+                self,
+                text=f"{symbol} {self.variation}",
+                font=ctk.CTkFont(
+                    size=12,
+                    weight="bold"
+                )
+            )
+
+            self.variation_label.pack(
                 anchor="w",
                 padx=20,
                 pady=(2, 15)

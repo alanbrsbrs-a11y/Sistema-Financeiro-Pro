@@ -61,38 +61,50 @@ class MainContent(ctk.CTkFrame):
         self.create_card(
             title="Saldo",
             value="R$ 8.450,00",
-            description="Saldo disponível"
+            description="Saldo disponível",
+            variation="+8,2%",
+            variation_type="positive"
         )
 
         self.create_card(
             title="Receitas",
             value="R$ 5.200,00",
-            description="Total deste mês"
+            description="Total deste mês",
+            variation="+12,5%",
+            variation_type="positive"
         )
 
         self.create_card(
             title="Despesas",
             value="R$ 3.100,00",
-            description="Total deste mês"
+            description="Total deste mês",
+            variation="-4,2%",
+            variation_type="positive"
         )
 
         self.create_card(
             title="Economia",
             value="40,4%",
-            description="Taxa de economia"
+            description="Taxa de economia",
+            variation="+3,1%",
+            variation_type="positive"
         )
 
     def create_card(
         self,
         title,
         value,
-        description
+        description,
+        variation="",
+        variation_type="neutral"
     ):
         card = FinanceCard(
             self.cards_frame,
             title=title,
             value=value,
-            description=description
+            description=description,
+            variation=variation,
+            variation_type=variation_type
         )
 
         card.pack(
