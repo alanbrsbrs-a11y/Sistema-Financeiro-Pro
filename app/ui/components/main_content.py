@@ -79,7 +79,7 @@ class MainContent(ctk.CTkFrame):
             value="R$ 3.100,00",
             description="Total deste mês",
             variation="-4,2%",
-            variation_type="positive"
+            variation_type="negative"
         )
 
         self.create_card(

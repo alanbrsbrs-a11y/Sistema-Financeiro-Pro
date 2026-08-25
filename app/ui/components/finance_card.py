@@ -67,33 +67,45 @@ class FinanceCard(ctk.CTkFrame):
             self.description_label.pack(
                 anchor="w",
                 padx=20,
-                pady=(2, 15)
+                pady=(2, 5)
             )
 
         self.create_variation()
-            
+
     def create_variation(self):
-            if not self.variation:
-                return
+        if not self.variation:
+            return
 
-            if self.variation_type == "positive":
-                symbol = "↑"
-            elif self.variation_type == "negative":
-                symbol = "↓"
-            else:
-                symbol = "→"
+        if self.variation_type == "positive":
+            symbol = "↑"
+        elif self.variation_type == "negative":
+            symbol = "↓"
+        else:
+            symbol = "→"
 
-            self.variation_label = ctk.CTkLabel(
-                self,
-                text=f"{symbol} {self.variation}",
-                font=ctk.CTkFont(
-                    size=12,
-                    weight="bold"
-                )
+        variation_color = self.get_variation_color()
+
+        self.variation_label = ctk.CTkLabel(
+            self,
+            text=f"{symbol} {self.variation}",
+            text_color=variation_color,
+            font=ctk.CTkFont(
+                size=12,
+                weight="bold"
             )
+        )
 
-            self.variation_label.pack(
-                anchor="w",
-                padx=20,
-                pady=(2, 15)
-            )
+        self.variation_label.pack(
+            anchor="w",
+            padx=20,
+            pady=(0, 15)
+        )
+
+    def get_variation_color(self):
+        if self.variation_type == "positive":
+            return "#2ECC71"
+
+        if self.variation_type == "negative":
+            return "#E74C3C"
+
+        return "#A0A0A0"
